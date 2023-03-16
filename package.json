@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/kaspernj/trix-text-align.git"
+    "url": "git+https://github.com/kaspernj/trix-text-align.git"
   },
   "keywords": [
     "trix",
