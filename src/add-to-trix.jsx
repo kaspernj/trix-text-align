@@ -4,8 +4,7 @@ import Trix from "trix"
 
 Trix.config.textAttributes.textAlign = {
   styleProperty: "text-align",
-  inheritable: true,
-  tagName: "div"
+  tagName: "p"
 }
 
 export default function addToTrix(trix) {

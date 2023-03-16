@@ -7,6 +7,8 @@ export default class TextAlignElement extends React.PureComponent {
     trix: PropTypes.object.isRequired
   }
 
+  static possibleValues = ["left", "center", "right"]
+
   debugging = false
   defaultValue = undefined
   currentValue = this.defaultValue
@@ -57,10 +59,6 @@ export default class TextAlignElement extends React.PureComponent {
     )
   }
 
-  applyCurrentValue = () => {
-    this.props.trix.editor.activateAttribute("textAlign", this.currentValue)
-  }
-
   debug(...args) {
     if (this.debugging) {
       console.log(...args)
@@ -89,7 +87,7 @@ export default class TextAlignElement extends React.PureComponent {
     this.debug("setActive", newValue)
     this.currentValue = newValue
     this.setState({active: newValue})
-    this.applyCurrentValue()
+    this.props.trix.editor.activateAttribute("textAlign", newValue)
   }
 
   onSelectionChanged = () => {
@@ -109,12 +107,14 @@ export default class TextAlignElement extends React.PureComponent {
 
     this.debug("syncTextAlignFromCurrentCursor", {textAlign})
 
-    if (textAlign) {
+    if (TextAlignElement.possibleValues.includes(textAlign)) {
       this.currentValue = textAlign
-      this.setState({active: textAlign})
     } else {
       this.currentValue = this.defaultValue
-      this.setState({active: textAlign})
+    }
+
+    if (this.state.active != this.currentValue) {
+      this.setState({active: this.currentValue})
     }
   }
 }
