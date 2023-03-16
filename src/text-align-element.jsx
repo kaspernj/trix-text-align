@@ -10,7 +10,6 @@ export default class TextAlignElement extends React.PureComponent {
   debugging = false
   defaultValue = undefined
   currentValue = this.defaultValue
-  frozen = false
   textAlignLeftButtonRef = React.createRef()
   textAlignCenterButtonRef = React.createRef()
   textAlignRightButtonRef = React.createRef()
